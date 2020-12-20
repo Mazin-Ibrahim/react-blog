@@ -3,17 +3,20 @@ import swal from "sweetalert";
 import axios from "axios";
 
 const EditForm = (props) =>{
+
    const [title,setTitle] = useState(props.post.title)
    const [body,setBody]   = useState(props.post.body)
-   const [status,setStatus] = useState(props.post.status) 
+   const [status,setStatus] = useState(props.post.status)
+
    
-  const  handelSubmit = (e) => {
+  const  handelSubmit = (e) => { 
      e.preventDefault();
      const post = {
        title:title,
        body:body,
        status:status
      }
+   
        
      const id = props.post.id
      const token = localStorage.getItem("token");
@@ -27,7 +30,7 @@ const EditForm = (props) =>{
        text: "Post Has Been Updated",
        icon: "success",
      });
-         
+      props.updatePostAfterSubmitEditPost(response.data);
      });
    }
     return (

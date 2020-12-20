@@ -4,11 +4,15 @@ const EditPost = (props) => {
  const close = () => {
    props.setCloseDisplayEditForm();
  };
-  return ( 
+ 
+  return (
     <>
       <div className="flex items-center justify-between  bg-white px-4 p-4">
         <div className="md:w-3/4">
-          <EditForm post={props.post}></EditForm>
+          <EditForm
+            updatePostAfterSubmitEditPost={props.updatePostAfterSubmit}
+            post={props.post}
+          ></EditForm>
         </div>
         <div className="md:w-1/3 mb-4">
           <button
